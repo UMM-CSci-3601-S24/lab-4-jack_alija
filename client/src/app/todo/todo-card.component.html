@@ -1,0 +1,21 @@
+@if (this.todo) {
+  <mat-card appearance="outlined" class="user-card" style="width: 150px;">
+      <mat-card-title class="todo-card-owner" style="text-align: center;">{{this.todo.owner}}</mat-card-title>
+      <hr style="border-top: thick 1px;" width="100%"/>
+      <mat-card-subtitle class="todo-card-status">Completed: {{this.todo.status}}</mat-card-subtitle>
+      <mat-card-subtitle class="todo-cards-category">{{this.todo.category}}</mat-card-subtitle>
+
+    @if (!this.simple) {
+      <mat-card-content>
+        <p><span class="todo-card-body">{{this.todo.body}}</span></p>
+      </mat-card-content>
+    }
+
+      @if (this.simple) {
+        <mat-card-actions>
+        <button mat-button data-test="viewProfileButton" [routerLink]="['/todos', this.todo._id]">View Profile</button>
+      </mat-card-actions>
+      }
+
+  </mat-card>
+}
