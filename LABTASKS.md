@@ -23,16 +23,16 @@ The structure of the server is, for the most part, the same as it has been in th
 
 Spend some time looking over the project with these questions in mind. (Unlike the previous labs, however, you do _not_ need to write up and turn in your answers to these questions.)
 
-- [ ] What do we do in the `Main`, `Server` and `UserController` classes
-- [ ] to set up our connection to the development database?
-- [ ] How do we retrieve a user by ID in the `UserController.getUser(Context...)` method?
-- [ ] How do we retrieve all the users with a given age
-- [ ] in `UserController.getUsers(Context...)`? What's the role of
-- [ ] the variables `combinedFilter` and `sortingOrder` in that method?
-- [ ] What is happening in the `UserControllerSpec.setUpEach()` method?
-- [ ] What's being tested in `UserControllerSpec.canGetUsersWithAge37()`?
-- [ ] How is that test implemented?
-- [ ] Follow the process for adding a new user. What role does `UserController` play in the process?
+- [x] What do we do in the `Main`, `Server` and `UserController` classes
+- [x] to set up our connection to the development database?
+- [x] How do we retrieve a user by ID in the `UserController.getUser(Context...)` method?
+- [x] How do we retrieve all the users with a given age
+- [x] in `UserController.getUsers(Context...)`? What's the role of
+- [x] the variables `combinedFilter` and `sortingOrder` in that method?
+- [x] What is happening in the `UserControllerSpec.setUpEach()` method?
+- [x] What's being tested in `UserControllerSpec.canGetUsersWithAge37()`?
+- [x] How is that test implemented?
+- [x] Follow the process for adding a new user. What role does `UserController` play in the process?
 
 ## Overview of the lab
 
@@ -45,19 +45,19 @@ Spend some time looking over the project with these questions in mind. (Unlike t
 
 ### Features to implement
 
-- [ ] Filter todos by status
-- [ ] Filter todos by owner
-- [ ] Filter todos by contents of the body
-- [ ] Filter todos by category
-- [ ] Combinations of filters
-- [ ] Sort by a todo field (status, owner, body contents, or category)
-- [ ] Limit the number of todos returned
+- [x] Filter todos by status
+- [x] Filter todos by owner
+- [x] Filter todos by contents of the body
+- [x] Filter todos by category
+- [x] Combinations of filters
+- [x] Sort by a todo field (status, owner, body contents, or category)
+- [x] Limit the number of todos returned
 - [ ] Ability to add new todos. This requires:
   - [ ] An Angular form/page that allows the user to enter the information for a new todo with reasonable controls and validation.
   - [ ] A new endpoint on the server that allows clients to add new todos.
   - [ ] Logic in the server to add that new todo to the database and return the new ID.
 - [ ] Testing of all of the above.
-- [ ] Display the todos in a reasonable way using at least two nifty Angular Material features from [here](https://material.angular.io/components/categories)!
+- [x] Display the todos in a reasonable way using at least two nifty Angular Material features from [here](https://material.angular.io/components/categories)!
 
 ## Workflow and Continuous Integration
 

@@ -39,7 +39,6 @@ public class TodoController implements Controller {
   static final String OWNER_KEY = "owner";
   static final String CATEGORY_KEY = "category";
   static final String SORT_ORDER_KEY = "sortorder";
-
   private static final String CATEGORY_REGEX = "^(homework|software design|groceries|video games)$";
   public static final String OWNER_REGEX = "^[a-zA-Z0-9.-]$";
 
@@ -88,6 +87,9 @@ public class TodoController implements Controller {
    * @param ctx a Javalin HTTP context
    */
   public void getTodos(Context ctx) {
+    System.err.println(ctx);
+    System.err.println(Todo.class);
+
     Bson combinedFilter = constructFilter(ctx);
     Bson sortingOrder = constructSortingOrder(ctx);
 
@@ -120,7 +122,8 @@ public class TodoController implements Controller {
    * @param ctx a Javalin HTTP context, which contains the query parameters
    *    used to construct the filter
    * @return a Bson filter document that can be used in the `find` method
-   *   to filter the database collection of todos
+   *   to filter the database collection o There was a problem loading the Todos. Possibly the server is down or perhaps there are network issues.
+f todos
    */
   private Bson constructFilter(Context ctx) {
     List<Bson> filters = new ArrayList<>(); // start with an empty list of filters
@@ -163,7 +166,7 @@ public class TodoController implements Controller {
     // Sort the results. Use the `sortby` query param (default "name")
     // as the field to sort by, and the query param `sortorder` (default
     // "asc") to specify the sort order.
-    String sortBy = Objects.requireNonNullElse(ctx.queryParam("sortby"), "name");
+    String sortBy = Objects.requireNonNullElse(ctx.queryParam("sortby"), "owner");
     String sortOrder = Objects.requireNonNullElse(ctx.queryParam("sortorder"), "asc");
     Bson sortingOrder = sortOrder.equals("desc") ?  Sorts.descending(sortBy) : Sorts.ascending(sortBy);
     return sortingOrder;
@@ -254,9 +257,9 @@ public class TodoController implements Controller {
      * `BadRequestResponse` with an appropriate error message.
      */
     Todo newTodo = ctx.bodyValidator(Todo.class)
-      .check(tdo -> tdo.owner != null && tdo.owner.length() > 0, "Todo must have a non-empty todo name")
-      .check(tdo -> tdo.status || !tdo.status, "Todo's status must be boolean")
-      .check(tdo -> tdo.category.matches(CATEGORY_REGEX), "Todo must have a legal todo category")
+      .check(todo -> todo.owner != null && todo.owner.length() > 0, "Todo must have a non-empty todo name")
+      .check(todo -> todo.status || !todo.status, "Todo's status must be boolean")
+      .check(todo -> todo.category.matches(CATEGORY_REGEX), "Todo must have a legal todo category")
       .get();
 
     // Generate a todo avatar (you won't need this part for todos)

@@ -31,7 +31,7 @@ public class Todo {
   public String owner;
   public boolean status;
   public String category;
-  public int limit;
+  public String body;
 
 
   @Override
