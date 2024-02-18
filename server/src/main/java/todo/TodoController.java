@@ -258,7 +258,7 @@ f todos
      */
     Todo newTodo = ctx.bodyValidator(Todo.class)
       .check(todo -> todo.owner != null && todo.owner.length() > 0, "Todo must have a non-empty todo name")
-      .check(todo -> todo.status || !todo.status, "Todo's status must be boolean")
+      .check(todo -> todo.status | !todo.status, "Todo's status must be boolean")
       .check(todo -> todo.category.matches(CATEGORY_REGEX), "Todo must have a legal todo category")
       .get();
 

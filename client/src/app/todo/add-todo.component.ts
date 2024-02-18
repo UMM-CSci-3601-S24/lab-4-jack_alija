@@ -62,10 +62,10 @@ export class AddTodoComponent {
   // the order the messages are defined in is the order they will display in.
   readonly addTodoValidationMessages = {
     owner: [
-      {type: 'required', message: 'Name is required'},
+      {type: 'required', message: 'Owner is required'},
       {type: 'minlength', message: 'Name must be at least 2 characters long'},
       {type: 'maxlength', message: 'Name cannot be more than 50 characters long'},
-      {type: 'existingName', message: 'Name has already been taken'}
+      {type: 'existingOwner', message: 'Name has already been taken'}
     ],
 
     status: [
