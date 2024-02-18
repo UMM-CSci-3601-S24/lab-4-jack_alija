@@ -13,8 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
 import { MatFormField, MatLabel, MatHint, MatError } from '@angular/material/form-field';
 import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
-
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 /**
  * A component that displays a list of todos, either as a grid
  * of cards or as a vertical list.
@@ -30,7 +31,7 @@ import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
     styleUrls: ['./todo-list.component.scss'],
     providers: [],
     standalone: true,
-    imports: [TodoCardComponent, MatCard, MatCardTitle, MatCardContent, MatFormField, MatLabel, MatInput, FormsModule, MatHint, MatSelect, MatOption, MatRadioGroup, MatRadioButton, MatNavList, MatListSubheaderCssMatStyler, MatListItem, RouterLink, MatListItemTitle, MatListItemLine, MatError]
+    imports: [TodoCardComponent,MatButtonModule, MatTooltipModule, MatCard, MatCardTitle, MatIconModule, MatCardContent, MatFormField, MatLabel, MatInput, FormsModule, MatHint, MatSelect, MatOption, MatRadioGroup, MatRadioButton, MatNavList, MatListSubheaderCssMatStyler, MatListItem, RouterLink, MatListItemTitle, MatListItemLine, MatError]
 })
 export class TodoListComponent implements OnInit, OnDestroy {
   // These are public so that tests can reference them (.spec.ts)
