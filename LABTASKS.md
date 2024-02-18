@@ -52,10 +52,10 @@ Spend some time looking over the project with these questions in mind. (Unlike t
 - [x] Combinations of filters
 - [x] Sort by a todo field (status, owner, body contents, or category)
 - [x] Limit the number of todos returned
-- [ ] Ability to add new todos. This requires:
-  - [ ] An Angular form/page that allows the user to enter the information for a new todo with reasonable controls and validation.
-  - [ ] A new endpoint on the server that allows clients to add new todos.
-  - [ ] Logic in the server to add that new todo to the database and return the new ID.
+- [x] Ability to add new todos. This requires:
+  - [x] An Angular form/page that allows the user to enter the information for a new todo with reasonable controls and validation.
+  - [x] A new endpoint on the server that allows clients to add new todos.
+  - [x] Logic in the server to add that new todo to the database and return the new ID.
 - [ ] Testing of all of the above.
 - [x] Display the todos in a reasonable way using at least two nifty Angular Material features from [here](https://material.angular.io/components/categories)!
 
