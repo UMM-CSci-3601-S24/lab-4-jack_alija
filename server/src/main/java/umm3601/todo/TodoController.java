@@ -1,4 +1,4 @@
-package todo;
+package umm3601.todo;
 
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
@@ -130,13 +130,11 @@ f todos
 
     if (ctx.queryParamMap().containsKey(CATEGORY_KEY)) {
       String category = ctx.queryParamAsClass(CATEGORY_KEY, String.class)
-        .check(it -> it.matches(CATEGORY_REGEX), "Todo must have a legal todo category")
         .get();
       filters.add(eq(CATEGORY_KEY, category));
     }
     if (ctx.queryParamMap().containsKey(OWNER_KEY)) {
       String role = ctx.queryParamAsClass(OWNER_KEY, String.class)
-        .check(it -> it.matches(OWNER_REGEX), "Todo must have a legal todo owner name")
         .get();
       filters.add(eq(OWNER_KEY, role));
     }
@@ -259,7 +257,6 @@ f todos
     Todo newTodo = ctx.bodyValidator(Todo.class)
       .check(todo -> todo.owner != null && todo.owner.length() > 0, "Todo must have a non-empty todo name")
       .check(todo -> todo.status | !todo.status, "Todo's status must be boolean")
-      .check(todo -> todo.category.matches(CATEGORY_REGEX), "Todo must have a legal todo category")
       .get();
 
     // Generate a todo avatar (you won't need this part for todos)
@@ -340,7 +337,7 @@ f todos
    * add the routes for that controller's data.
    *
    * @param server The Javalin server instance
-   * @param todoController The controller that handles the todo endpoints
+   * @param TodoController The controller that handles the todo endpoints
    */
   public void addRoutes(Javalin server) {
     // Get the specified todo

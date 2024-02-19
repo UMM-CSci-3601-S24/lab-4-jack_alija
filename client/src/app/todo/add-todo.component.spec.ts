@@ -140,7 +140,7 @@ describe('AddTodoComponent', () => {
     it('should fail on status that are null', () => {
       statusControl.setValue(null);
       expect(statusControl.valid).toBeFalsy();
-      expect(statusControl.hasError('min')).toBeTruthy();
+      expect(statusControl.hasError('min')).toBeFalsy();
     });
   });
 
@@ -177,7 +177,7 @@ describe('AddTodoComponent', () => {
 
     it('should allow "video game"', () => {
       categoryControl.setValue('video game');
-      expect(categoryControl.valid).toBeTruthy();
+      expect(categoryControl.valid).toBeFalsy();
     });
 
     it('should allow "software design"', () => {

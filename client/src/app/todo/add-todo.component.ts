@@ -69,8 +69,8 @@ export class AddTodoComponent {
     ],
 
     status: [
-      {type: 'required', message: 'Status is required'},
-      {type: 'boolean', message: 'Status must be either true or false'}
+      {type: 'required', message: 'Email is required'},
+      {type: 'boolean', message: 'Email must be formatted properly'},
     ],
 
     body: [
