@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import umm3601.todo.Todo;
-
 class TodoSpec {
    private static final String FAKE_ID_STRING_1 = "fakeIdOne";
     private static final String FAKE_ID_STRING_2 = "fakeIdTwo";
@@ -45,6 +43,7 @@ class TodoSpec {
         assertTrue(todo1.hashCode() == todo2.hashCode());
     }
 
+    @SuppressWarnings("unlikely-arg-type")
     @Test
     void todosAreNotEqualToOtherKindsOfThings() {
         todo1._id = FAKE_ID_STRING_1;
