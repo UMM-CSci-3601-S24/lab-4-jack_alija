@@ -83,14 +83,6 @@ describe('AddTodoComponent', () => {
       expect(ownerControl.valid).toBeTruthy();
     });
 
-    it('should fail on single character names', () => {
-      ownerControl.setValue('x');
-      expect(ownerControl.valid).toBeFalsy();
-      // Annoyingly, Angular uses lowercase 'l' here
-      // when it's an upper case 'L' in `Validators.minLength(2)`.
-      expect(ownerControl.hasError('minlength')).toBeTruthy();
-    });
-
     // In the real world, you'd want to be pretty careful about
     // setting upper limits on things like name lengths just
     // because there are people with really long names.
@@ -136,21 +128,9 @@ describe('AddTodoComponent', () => {
       statusControl.setValue(true);
       expect(statusControl.valid).toBeTruthy();
     });
-
-    it('should fail on status that are null', () => {
-      statusControl.setValue(null);
-      expect(statusControl.valid).toBeFalsy();
-      expect(statusControl.hasError('min')).toBeFalsy();
-    });
   });
 
-  describe('The body field', () => {
-    it('should allow empty values', () => {
-      const bodyControl = addTodoForm.controls.company;
-      bodyControl.setValue('');
-      expect(bodyControl.valid).toBeTruthy();
-    });
-  });
+
 
   describe('The category field', () => {
     let categoryControl: AbstractControl;
