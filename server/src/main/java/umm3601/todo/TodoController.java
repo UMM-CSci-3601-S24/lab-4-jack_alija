@@ -2,7 +2,6 @@ package umm3601.todo;
 
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
-import static com.mongodb.client.model.Filters.regex;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 import org.bson.Document;
 import org.bson.UuidRepresentation;
@@ -122,7 +120,8 @@ public class TodoController implements Controller {
    * @param ctx a Javalin HTTP context, which contains the query parameters
    *    used to construct the filter
    * @return a Bson filter document that can be used in the `find` method
-   *   to filter the database collection o There was a problem loading the Todos. Possibly the server is down or perhaps there are network issues.
+   *   to filter the database collection o There was a problem loading the Todos.
+   *  Possibly the server is down or perhaps there are network issues.
 f todos
    */
   private Bson constructFilter(Context ctx) {
