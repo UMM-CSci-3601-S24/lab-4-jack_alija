@@ -85,4 +85,19 @@ describe('TodoProfileComponent', () => {
     activatedRoute.setParamMap({ id: todoId });
   });
 
+  it('should display the todo owner', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('mat-card-title').textContent).toContain('Blanche');
+  });
+
+  it('should display the todo body', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('mat-card-content').textContent).toContain("In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.");
+  });
+
+  it('should display the todo status', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('mat-card-subtitle').textContent).toContain('false');
+  });
+
 });
