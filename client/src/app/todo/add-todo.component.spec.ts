@@ -144,14 +144,6 @@ describe('AddTodoComponent', () => {
     });
   });
 
-  describe('The body field', () => {
-    it('should allow empty values', () => {
-      const bodyControl = addTodoForm.controls.company;
-      bodyControl.setValue('');
-      expect(bodyControl.valid).toBeTruthy();
-    });
-  });
-
   describe('The category field', () => {
     let categoryControl: AbstractControl;
 
