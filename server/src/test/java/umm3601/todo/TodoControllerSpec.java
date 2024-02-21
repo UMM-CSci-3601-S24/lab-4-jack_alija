@@ -159,7 +159,7 @@ class TodoControllerSpec {
   }
 
   @Test
-  public void canBuildController() throws IOException{
+  public void canBuildController() throws IOException {
     Javalin mockServer = Mockito.mock(Javalin.class);
     todoController.addRoutes(mockServer);
     verify(mockServer, Mockito.atLeast(2)).get(any(), any());
@@ -167,7 +167,7 @@ class TodoControllerSpec {
 
   @Test
   void canGetAllTodos() throws IOException {
-    when (ctx.queryParamMap()).thenReturn(Collections.emptyMap());
+    when(ctx.queryParamMap()).thenReturn(Collections.emptyMap());
     todoController.getTodos(ctx);
     verify(ctx).json(todoArrayListCaptor.capture());
     verify(ctx).status(HttpStatus.OK);
@@ -177,7 +177,7 @@ class TodoControllerSpec {
   @Test
   void canGetTodoById() throws IOException {
     String idString = samsId.toHexString();
-    when (ctx.pathParam("id")).thenReturn(idString);
+    when(ctx.pathParam("id")).thenReturn(idString);
     todoController.getTodo(ctx);
     verify(ctx).json(todoCaptor.capture());
     verify(ctx).status(HttpStatus.OK);
@@ -186,7 +186,7 @@ class TodoControllerSpec {
 
   @Test
   void getTodoByBadId() throws IOException {
-    when (ctx.pathParam("id")).thenReturn("badID");
+    when(ctx.pathParam("id")).thenReturn("badID");
     assertThrows(BadRequestResponse.class, () -> {
       todoController.getTodo(ctx);
     });
@@ -194,7 +194,7 @@ class TodoControllerSpec {
 
   @Test
   void getTodoByNonexistentId() throws IOException {
-    when (ctx.pathParam("id")).thenReturn(new ObjectId().toHexString());
+    when(ctx.pathParam("id")).thenReturn(new ObjectId().toHexString());
     assertThrows(NotFoundResponse.class, () -> {
       todoController.getTodo(ctx);
     });
@@ -204,9 +204,9 @@ class TodoControllerSpec {
   @Test
   void canGetOwner() throws IOException {
     Map<String, List<String>> queryParams = new HashMap<>();
-    queryParams.put(TodoController.OWNER_KEY, Arrays.asList(new String[] { "Sam" }));
+    queryParams.put(TodoController.OWNER_KEY, Arrays.asList(new String[]{"Sam"}));
     when(ctx.queryParamMap()).thenReturn(queryParams);
-    when (ctx.queryParamAsClass(TodoController.OWNER_KEY, String.class))
+    when(ctx.queryParamAsClass(TodoController.OWNER_KEY, String.class))
         .thenReturn(Validator.create(String.class, "Sam", TodoController.OWNER_KEY));
 
     todoController.getTodos(ctx);
@@ -223,9 +223,9 @@ class TodoControllerSpec {
   @Test
   void canGetCategory() throws IOException {
     Map<String, List<String>> queryParams = new HashMap<>();
-    queryParams.put(TodoController.CATEGORY_KEY, Arrays.asList(new String[] { "Software Design" }));
+    queryParams.put(TodoController.CATEGORY_KEY, Arrays.asList(new String[]{"Software Design"}));
     when(ctx.queryParamMap()).thenReturn(queryParams);
-    when (ctx.queryParamAsClass(TodoController.CATEGORY_KEY, String.class))
+    when(ctx.queryParamAsClass(TodoController.CATEGORY_KEY, String.class))
         .thenReturn(Validator.create(String.class, "Software Design", TodoController.CATEGORY_KEY));
 
     todoController.getTodos(ctx);
@@ -242,9 +242,9 @@ class TodoControllerSpec {
   @Test
   void canSortByOwner() throws IOException {
     Map<String, List<String>> queryParams = new HashMap<>();
-    queryParams.put(TodoController.SORT_ORDER_KEY, Arrays.asList(new String[] { "owner" }));
+    queryParams.put(TodoController.SORT_ORDER_KEY, Arrays.asList(new String[]{"owner"}));
     when(ctx.queryParamMap()).thenReturn(queryParams);
-    when (ctx.queryParamAsClass(TodoController.SORT_ORDER_KEY, String.class))
+    when(ctx.queryParamAsClass(TodoController.SORT_ORDER_KEY, String.class))
         .thenReturn(Validator.create(String.class, "owner", TodoController.SORT_ORDER_KEY));
 
     todoController.getTodos(ctx);
@@ -253,7 +253,8 @@ class TodoControllerSpec {
     verify(ctx).status(HttpStatus.OK);
     assertEquals(4, todoArrayListCaptor.getValue().size());
     for (int i = 0; i < todoArrayListCaptor.getValue().size() - 1; i++) {
-      assertTrue(todoArrayListCaptor.getValue().get(i).owner.compareTo(todoArrayListCaptor.getValue().get(i + 1).owner) <= 0);
+      assertTrue(todoArrayListCaptor.getValue().get(i).owner
+      .compareTo(todoArrayListCaptor.getValue().get(i + 1).owner) <= 0);
     }
   }
 
