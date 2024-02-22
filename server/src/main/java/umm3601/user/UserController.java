@@ -40,7 +40,6 @@ public class UserController implements Controller {
   static final String COMPANY_KEY = "company";
   static final String ROLE_KEY = "role";
   static final String SORT_ORDER_KEY = "sortorder";
-
   private static final int REASONABLE_AGE_LIMIT = 150;
   private static final String ROLE_REGEX = "^(admin|editor|viewer)$";
   public static final String EMAIL_REGEX = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
@@ -90,6 +89,7 @@ public class UserController implements Controller {
    * @param ctx a Javalin HTTP context
    */
   public void getUsers(Context ctx) {
+    System.err.println("Getting users");
     Bson combinedFilter = constructFilter(ctx);
     Bson sortingOrder = constructSortingOrder(ctx);
 
