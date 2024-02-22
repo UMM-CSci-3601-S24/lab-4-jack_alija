@@ -43,6 +43,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   public todoCategory: string;
   public todoBody: string;
   public todoLimit: number;
+  public todoOrder: string;
   public viewType: 'card' | 'list' = 'card';
 
   errMsg = '';
@@ -88,7 +89,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
                                   status: this.todoStatus,
                                   category: this.todoCategory,
                                   body: this.todoBody,
-                                  limit: this.todoLimit}
+                                  limit: this.todoLimit,
+                                  order: this.todoOrder}
     );
   }
 
