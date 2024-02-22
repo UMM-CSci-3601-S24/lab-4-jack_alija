@@ -6,3 +6,5 @@ export interface Todo {
   category: string
   limit?: number;
 }
+
+export type TodoCategory = 'groceries' | 'homework' | 'software design' | 'video games';

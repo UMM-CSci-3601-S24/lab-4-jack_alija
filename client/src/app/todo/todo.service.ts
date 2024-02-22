@@ -28,7 +28,7 @@ export class TodoService {
    * @param filters a map that allows us to specify a target title, description, or category to filter by, or any combination of those
    * @returns an `Observable` of an array of `Todos`.
    */
-  getTodos(filters?: { owner?: string; status?: boolean; body?: string; category?: string; limit?: number}): Observable<Todo[]> {
+  getTodos(filters?: { owner?: string; status?: boolean; body?: string; category?: string; limit?: number; order?: string}): Observable<Todo[]> {
     let httpParams: HttpParams = new HttpParams();
     if (filters) {
       if (filters.owner) {
@@ -46,6 +46,9 @@ export class TodoService {
       if (filters.limit) {
         httpParams = httpParams.set('limit', filters.limit);
       }
+      if (filters.limit) {
+        httpParams = httpParams.set('order', filters.limit);
+      }
 
     }
     return this.httpClient.get<Todo[]>(this.todoUrl, {
@@ -60,7 +63,7 @@ export class TodoService {
     return this.httpClient.get<Todo>(this.todoUrl + '/' + id);
   }
 
-  filterTodos(todos: Todo[], filters: { owner?: string; status?: boolean; body?: string; category?: string; limit?: number}): Todo[] {
+  filterTodos(todos: Todo[], filters: { owner?: string; status?: boolean; body?: string; category?: string; limit?: number, order?: string}): Todo[] {
     let filteredTodos = todos;
     if (filters) {
       if (filters.owner) {
@@ -82,7 +85,19 @@ export class TodoService {
       if (filters.limit) {
         filteredTodos = filteredTodos.slice(0, filters.limit);
       }
-
+      if (filters.order) {
+        if(filters.order === "owner")
+          filteredTodos = filteredTodos.sort((a, b) => a.owner.localeCompare(b.owner));
+        if(filters.order === "body") {
+          filteredTodos = filteredTodos.sort((a, b) => a.owner.localeCompare(b.owner));
+          filteredTodos = filteredTodos.sort((a, b) => a.body.localeCompare(b.body));
+        }
+        if(filters.order === "category")
+        {
+          filteredTodos = filteredTodos.sort((a, b) => a.owner.localeCompare(b.owner));
+          filteredTodos = filteredTodos.sort((a, b) => a.category.localeCompare(b.category));
+        }
+      }
     }
     return filteredTodos;
   }
